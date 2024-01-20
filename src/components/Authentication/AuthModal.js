@@ -38,7 +38,7 @@ const useStyles = makeStyles((theme) => ({
     
   }));
 
-export default function AuthModel() {
+export default function AuthModal() {
   const [open, setOpen] = useState(false);
   const handleOpen = () => setOpen(true);
   const handleClose = () => setOpen(false);
