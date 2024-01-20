@@ -8,7 +8,7 @@ import { onSnapshot, doc } from "firebase/firestore";
 const Crypto = createContext();
 
 const CryptoContext = ({ children }) => {
-  const [currency, setCurrency] = useState("INR");
+  const [currency, setCurrency] = useState(localStorage.getItem("currency") || "INR");
   const [symbol, setSymbol] = useState("₹");
   const [alert, setAlert] = useState({
     open: false,
@@ -25,7 +25,6 @@ const CryptoContext = ({ children }) => {
       const coinRef = doc(db, "watchlist", user?.uid);
       var unsubscribe = onSnapshot(coinRef, (coin) => {
         if (coin.exists()) {
-          console.log(coin.data().coins);
           setWatchlist(coin.data().coins);
         } else {
           console.log("No Items in Watchlist");
@@ -44,6 +43,10 @@ const CryptoContext = ({ children }) => {
       else setUser(null);
     });
   }, []);
+
+  useEffect(() => {
+    localStorage.setItem("currency", currency);
+  }, [currency]);
 
   const fetchCoins = async () => {
     setLoading(true);
@@ -73,8 +76,8 @@ const CryptoContext = ({ children }) => {
         coins,
         loading,
         watchlist,
+        setCoins,
         setUser,
-        
       }}
     >
       {children}

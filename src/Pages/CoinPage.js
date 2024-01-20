@@ -5,10 +5,12 @@ import { SingleCoin } from '../config/api';
 import axios from 'axios';
 import { styled } from '@mui/system';
 import CoinInfo from '../components/Banner/CoinInfo';
-import { LinearProgress, Typography} from '@mui/material';
+import { Button, LinearProgress, Typography} from '@mui/material';
 import { makeStyles } from '@mui/styles';
 import ReactHtmlParser from 'html-react-parser';
 import { numberWithCommas } from '../components/Banner/Carousal';
+import { doc, setDoc } from '@firebase/firestore';
+import { db } from '../firebase';
 
 
 const useStyles = makeStyles((theme) =>({ 
@@ -31,15 +33,16 @@ const useStyles = makeStyles((theme) =>({
     paddingTop: 10,
     width: '100%',
     [theme.breakpoints.down('md')]: {
-      display: 'flex',
-      justifyContent: 'space-between',
+      flexDirection: 'column',
+      alignItems: 'center',
     },
     [theme.breakpoints.down('sm')]: {
       flexDirection: 'column',
       alignItems: 'center',
     },
     [theme.breakpoints.down('xs')]: {
-      alignItems: 'start',
+      flexDirection: 'column',
+      alignItems: 'center',
     },
 
   }
@@ -56,7 +59,7 @@ const Container = styled('div')(({ theme }) => ({
 }));
 
 const Sidebar = styled('div')(({ theme }) => ({
-  width: '30%',
+  width: '40%',
   display: 'flex',
   flexDirection: 'column',
   alignItems: 'center',
@@ -71,7 +74,56 @@ const Sidebar = styled('div')(({ theme }) => ({
 const CoinPage = () => {
   const {id}=useParams();
   const [coin, setCoin]=useState();
-  const {currency, symbol}= CryptoState();
+  const {currency, symbol, user, watchlist}= CryptoState();
+  const { setAlert } = CryptoState();
+
+
+  const inWatchlist = watchlist.includes(coin?.id);
+
+  const addToWatchlist = async () => {
+    const coinRef = doc(db, "watchlist", user.uid);
+    try {
+      await setDoc(
+        coinRef,
+        { coins: watchlist ? [...watchlist, coin?.id] : [coin?.id] },
+        { merge: true }
+      );
+      setAlert({
+        open: true,
+        message: `${coin.name} Added to the Watchlist !`,
+        type: "success",
+      });
+    } catch (error) {
+      setAlert({
+        open: true,
+        message: error.message,
+        type: "error",
+      });
+    }
+  };
+
+  const removeFromWatchlist = async () => {
+    const coinRef = doc(db, "watchlist", user.uid);
+    try {
+      await setDoc(
+        coinRef,
+        { coins: watchlist.filter((wish) => wish !== coin?.id) },
+        { merge: true }
+      );
+      setAlert({
+        open: true,
+        message: `${coin.name} Removed from the Watchlist !`,
+        type: "success",
+      });
+    } catch (error) {
+      setAlert({
+        open: true,
+        message: error.message,
+        type: "error",
+      });
+    }
+  };
+
   useEffect(() => {
     const fetchCoins= async ()=>{
       const {data} = await axios.get(SingleCoin(id));
@@ -143,6 +195,21 @@ const CoinPage = () => {
                 {coin?.market_data.market_cap[currency.toLowerCase()].toString().slice(0,-6)} M
               </Typography>
             </span>
+            {user && (
+                <Button
+                  variant="outlined"
+                  style={{
+                    color: "black",
+                    width: "100%",
+                    marginTop: 10,
+                    height: 40,
+                    backgroundColor: inWatchlist ? "#ff0000" : "#EEBC1D",
+                  }}
+                  onClick={inWatchlist ? removeFromWatchlist : addToWatchlist}
+                >
+                  {inWatchlist ? "Remove from Watchlist" : "Add to Watchlist"}
+                </Button>
+              )}
           </div>
         </Sidebar>
         <CoinInfo coin={coin} />

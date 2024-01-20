@@ -4,8 +4,8 @@ import { useState } from 'react'
 import { CoinList } from '../config/api';
 import { CryptoState } from '../CryptoContext';
 import { useEffect } from 'react';
-import { ThemeProvider, makeStyles } from '@mui/styles';
-import { Container, LinearProgress, Pagination, Table, TableBody, TableCell, TableContainer, TableHead, TableRow, TextField, Typography, createTheme} from '@mui/material';
+import { makeStyles } from '@mui/styles';
+import { Container, LinearProgress, Pagination, Table, TableBody, TableCell, TableContainer, TableHead, TableRow, TextField, Typography} from '@mui/material';
 import { useNavigate } from 'react-router-dom';
 import { numberWithCommas } from './Banner/Carousal';
 
@@ -22,41 +22,6 @@ const useStyles=makeStyles({
       
 
 });
-const darkTheme = createTheme({
-    palette: {
-      type: 'dark',
-      primary: {
-        main: '#fff',
-      },
-      text: {
-        primary: 'white',
-      },
-      input: {
-        color: 'white',
-      },
-    },
-    components: {
-        MuiOutlinedInput: {
-          defaultProps: {
-            style: {
-              color: 'white',
-            },
-          },
-          styleOverrides: {
-            root: {
-              '& .MuiOutlinedInput-notchedOutline': {
-                borderColor: 'white',
-              },
-            },
-          },
-        },
-      },
-    pagination: {
-      "& .MuiPaginationItem-root": {
-        color: "gold",
-      },
-    }
-  });
   
 
 const CoinsTable = () => {
@@ -87,7 +52,6 @@ const CoinsTable = () => {
 const classes=useStyles();
 
   return (
-    <ThemeProvider theme={darkTheme}>
         <Container style={{textAlign: "center" }}>
             <Typography
                 variant='h4'
@@ -204,8 +168,6 @@ const classes=useStyles();
             />
 
         </Container>
-
-    </ThemeProvider>
   )
 }
 

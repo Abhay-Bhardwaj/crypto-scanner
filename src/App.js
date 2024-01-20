@@ -3,10 +3,16 @@ import {Routes, Route } from 'react-router-dom';
 import Header from './components/Header';
 import  Homepage from './Pages/Homepage';
 import CoinPage from './Pages/CoinPage';
-import { ThemeProvider, makeStyles } from '@mui/styles';
-import { createTheme } from '@mui/material';
+import { ThemeProvider, createTheme } from '@mui/material/styles';
+import CssBaseline from '@mui/material/CssBaseline';
+import CryptoAlert from './components/Alert';
+import { makeStyles } from '@mui/styles';
 
-const theme = createTheme();
+const darkTheme = createTheme({
+  palette: {
+    mode: 'dark',
+  },
+});
 
 const useStyles = makeStyles({
   App: {
@@ -21,7 +27,8 @@ function App() {
   
   const classes = useStyles();
 return (
-  <ThemeProvider theme={theme}>
+  <ThemeProvider theme={darkTheme}>
+    <CssBaseline/>
     <div className={classes.App}>
       <Header/>
       <Routes>
@@ -29,6 +36,7 @@ return (
         <Route path='/coins/:id' Component={CoinPage} />
       </Routes>
     </div>
+    <CryptoAlert />
     </ThemeProvider>
   );
 }
