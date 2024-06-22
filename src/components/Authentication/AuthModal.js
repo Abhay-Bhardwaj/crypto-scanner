@@ -3,12 +3,12 @@ import Box from '@mui/material/Box';
 import Button from '@mui/material/Button';
 import Modal from '@mui/material/Modal';
 import { makeStyles } from '@mui/styles';
-import { AppBar, Backdrop, Fade, Tab, Tabs } from '@mui/material';
+import { AppBar, Fade, Tab, Tabs } from '@mui/material';
 import { useState } from 'react';
 import Login from './Login';
 import SignUp from './SignUp';
 import GoogleButton from 'react-google-button';
-import { auth, signInwithGoogle } from '../../firebase';
+import { auth} from '../../firebase';
 import { GoogleAuthProvider, signInWithPopup } from 'firebase/auth';
 import { CryptoState } from '../../CryptoContext';
 

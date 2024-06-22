@@ -6,7 +6,6 @@ import LinearProgress from '@mui/material/LinearProgress';
 import { CircularProgress, ThemeProvider, createTheme } from '@mui/material';
 import { makeStyles } from '@mui/styles';
 import { Line } from 'react-chartjs-2';
-import Chart from 'chart.js/auto';
 import { chartDays } from '../../config/data';
 import SelectButton from '../SelectButton';
 

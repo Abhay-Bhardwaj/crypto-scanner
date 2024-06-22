@@ -2,6 +2,25 @@
 
 Welcome to the Crypto Scanner Website, your one-stop destination for tracking and analyzing cryptocurrencies. Our platform offers a comprehensive suite of features designed to empower users with the latest data and trends in the crypto market.
 
+
+## 🌐 Live Project
+
+Experience our News Blog live: [Visit Here](https://crypto-scanner-ab.netlify.app/)
+
+## 🖼️ Gallery: A Glimpse into Our Website
+
+### 🏠 Home Page
+Home Page
+![Home Page Screenshot](https://i.postimg.cc/G3yX3jp7/image.png)
+![Home Page Screenshot 2](https://i.postimg.cc/65Vzn5nC/image.png)
+
+
+### ❤️ Watchlist Page
+![Watchlist Page Screenshot](https://i.postimg.cc/WpG0fYzv/image.png)]
+
+### Coins Details Page
+![Coins Details Page](https://i.postimg.cc/DwZs02gv/image.png)
+
 ## Features
 
 - **Cryptocurrency Listings**: Browse through an extensive list of cryptocurrencies, updated in real-time. Get detailed information on market cap, price movements, and more.
@@ -27,8 +46,7 @@ To get started with the Crypto Scanner Website:
 ## Technologies Used
 
 - **Frontend**: React.js for a dynamic and responsive user interface.
-- **Backend**: Node.js and Express.js for server-side logic.
-- **Database**: MongoDB for storing user data and watchlists.
+- **Database**: Firbase for storing user data and watchlists.
 - **Authentication**: Firebase for secure user authentication via email and Google.
 
 ## Contributing
