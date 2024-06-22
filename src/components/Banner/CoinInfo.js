@@ -11,6 +11,7 @@ import Chart from 'chart.js/auto';
 import { chartDays } from '../../config/data';
 import SelectButton from '../SelectButton';
 
+Chart.register(CategoryScale);
 
 
 
