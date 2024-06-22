@@ -5,7 +5,7 @@ Welcome to the Crypto Scanner Website, your one-stop destination for tracking an
 
 ## 🌐 Live Project
 
-Experience our News Blog live: [Visit Here](https://crypto-scanner-ab.netlify.app/)
+Experience our Crypto Scanner live: [Visit Here](https://crypto-scanner-ab.netlify.app/)
 
 ## 🖼️ Gallery: A Glimpse into Our Website
 
