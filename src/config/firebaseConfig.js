@@ -1,5 +1,5 @@
 const firebaseConfig = {
-    apiKey: "AIzaSyDDVJw58UZft1JWNtf5zYG5uKXiyZ8ic14",
+    apiKey: process.env.REACT_APP_FIREBASE_API_KEY,
     authDomain: "crypto-scanner-ab.firebaseapp.com",
     projectId: "crypto-scanner-ab",
     storageBucket: "crypto-scanner-ab.appspot.com",
