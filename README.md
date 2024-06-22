@@ -16,7 +16,7 @@ Home Page
 
 
 ### ❤️ Watchlist Page
-![Watchlist Page Screenshot](https://i.postimg.cc/WpG0fYzv/image.png)]
+![Watchlist Page Screenshot](https://i.postimg.cc/WpG0fYzv/image.png)
 
 ### Coins Details Page
 ![Coins Details Page](https://i.postimg.cc/DwZs02gv/image.png)
